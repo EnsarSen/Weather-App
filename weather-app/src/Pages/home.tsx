@@ -3,10 +3,11 @@
 import { useQuery } from "@tanstack/react-query";
 
 
+
 const HomePage: any = () => {
   const getData = async () => {
-    const response = await fetch("http://127.0.0.1:8000/info");
-    const data = await response.json();
+    const response = await fetch("http://127.0.0.1:8000/info")
+    const data= await response.json();
     return data;
   };
 
@@ -20,7 +21,7 @@ if(isLoading == true){
 if(isError == true){
   console.log(error)
 }
-  console.log(data);
+  console.log({data});
   
   return (
     <div>
