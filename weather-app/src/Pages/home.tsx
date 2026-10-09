@@ -21,7 +21,7 @@ if(isLoading == true){
 if(isError == true){
   console.log(error)
 }
-  console.log({data});
+  console.log(data?.properties?.forecast);
   
   return (
     <div>
