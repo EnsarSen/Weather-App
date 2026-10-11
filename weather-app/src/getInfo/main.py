@@ -6,7 +6,7 @@ app = FastAPI()
 
 
 origins = [
-    "http://localhost:5173",  # Default Vite port
+    "http://localhost:5173",
 ]
 
 app.add_middleware(
@@ -16,16 +16,26 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+# 39.1451,-75.3865
 
 
-@app.get("/info")
-def get_info():
+@app.get("/info/{lat}/{lon}")
+def get_info(lat: float, lon: float):
 
-    url = "https://api.weather.gov/points/39.1451,-75.3865"
+    url = f"https://api.weather.gov/points/{lat},{lon}"
 
     headers = {"User-Agent": "weather-app"}
 
     response = requests.get(url, headers=headers)
-    print(response.status_code)
-    print(response.text[:300])
+
     return response.json()
+
+
+@app.get("/forecast/{lat}/{lon}")
+def get_forecast(lat: float, lon: float):
+    hourly = get_info(lat, lon)
+
+    hourly_forecast_link = hourly["properties"]["forecastHourly"]
+
+    hourly_forecast = requests.get(hourly_forecast_link)
+    return hourly_forecast.json()
