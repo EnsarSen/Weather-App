@@ -40,15 +40,17 @@ def get_location(locationName: str):
 
     data = temp_location.json()
 
-    latLon = {
-        "latitude": data["results"][0]["latitude"],
-        "longitude": data["results"][0]["longitude"],
-    }
+    # latlon = {
+    # "latitude": data["results"][0]["latitude"],
+    # "longitude": data["results"][0]["longitude"],
+    # }
 
-    return latLon
+    locations = data["results"][0:11]
+
+    return locations
 
 
-@app.get("/forecast/{locationData.latitude}/{locationData.longitude}")
+@app.get("/forecast/{lat}/{lon}")
 def get_forecast(lat: float, lon: float):
     hourly = get_info(lat, lon)
 
