@@ -62,6 +62,7 @@ const HomePage: any = () => {
               if (!/\d/.test(inputValue) && inputValue.trim() !== "") {
                 setLocation(location);
               }
+              setLocation(inputValue)
             }
           }}
         />
