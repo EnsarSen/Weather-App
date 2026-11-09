@@ -14,63 +14,63 @@ body {
   max-width: 1100px;
   min-height: 100vh;
   margin: 0 auto;
-  padding: 35px 25px;
+  padding: 18px 25px;
 }
 
 .app-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 35px;
+  margin: 0 0 14px;
+  font-size: 25px;
 }
 
 .app-header h1 {
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 700;
   margin: 0;
 }
 
 .search-section {
-  margin-bottom: 35px;
+  position: relative;
+  max-width: 550px;
+  margin-bottom: 15px;
 }
 
 .search-bar {
   width: 100%;
-  padding: 16px 20px;
-  font-size: 16px;
+  padding: 11px 15px;
+  font-size: 15px;
   color: white;
   background: rgba(255, 255, 255, 0.13);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 14px;
+  border-radius: 12px;
   outline: none;
 }
 
-.search-section {
-  position: relative;
-  max-width: 550px;
+.search-bar::placeholder {
+  color: rgba(255, 255, 255, 0.6);
 }
 
-.location-results {
-  display: none;
+/* Dropdown */
+.location-result {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 4px);
   left: 0;
   width: 100%;
-  max-height: 250px;
+  max-height: 190px;
   overflow-y: auto;
   background: #203d65;
   border-radius: 10px;
   z-index: 10;
-}
-
-.search-section:focus-within .location-results {
-  display: flex;
-  
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .location-button {
+  display: block;
   width: 100%;
-  padding: 12px;
+  padding: 9px 12px;
+  font-size: 14px;
   text-align: left;
   color: white;
   background: transparent;
@@ -82,84 +82,98 @@ body {
   background: rgba(255, 255, 255, 0.2);
 }
 
+/* Current weather */
 .current-weather {
   text-align: center;
-  padding: 35px 10px 55px;
+  padding: 18px 10px 24px;
 }
 
 .city-name {
-  font-size: clamp(28px, 5vw, 44px);
+  font-size: clamp(25px, 4vw, 36px);
   font-weight: 600;
-  margin: 0 0 8px;
+  margin: 0 0 4px;
 }
 
 .current-temp {
-  font-size: clamp(65px, 12vw, 110px);
+  font-size: clamp(55px, 9vw, 85px);
   font-weight: 300;
-  letter-spacing: -4px;
-  margin: 15px 0;
+  letter-spacing: -3px;
+  margin: 8px 0;
 }
 
 .weather-subtitle {
-  font-size: 18px;
+  font-size: 16px;
   color: rgba(255, 255, 255, 0.75);
+  margin: 5px 0;
 }
 
+/* Forecast section */
 .forecast-section {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 22px;
-  padding: 25px;
+  border-radius: 14px;
+  padding: 10px;
   backdrop-filter: blur(12px);
 }
 
 .section-title {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
-  margin: 0 0 20px;
+  margin: 0 0 12px;
 }
 
 .hourly-scroll {
   display: flex;
-  gap: 14px;
+  gap: 10px;
   overflow-x: auto;
-  padding-bottom: 14px;
+  padding-bottom: 8px;
   scroll-snap-type: x proximity;
 }
 
 .forecast-card {
-  flex: 0 0 105px;
+  flex: 0 0 85px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  min-height: 165px;
-  padding: 18px 12px;
-  border-radius: 18px;
+  gap: 8px;
+  min-height: 125px;
+  margin: 0;
+  padding: 12px 8px;
+  border-radius: 14px;
   background: rgba(255, 255, 255, 0.1);
   scroll-snap-align: start;
 }
 
 .forecast-time {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   white-space: nowrap;
 }
 
 .forecast-icon {
-  width: 54px;
-  height: 54px;
+  width: 38px;
+  height: 38px;
   object-fit: contain;
 }
 
 .forecast-temp {
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 600;
 }
 
+/* Your JSX uses this for forecast times */
+.forecast-card .forecast-section {
+  font-size: 12px;
+  padding: 6px;
+  border: none;
+  border-radius: 8px;
+  text-align: center;
+  white-space: nowrap;
+}
+
 .hourly-scroll::-webkit-scrollbar {
-  height: 6px;
+  height: 5px;
 }
 
 .hourly-scroll::-webkit-scrollbar-thumb {
@@ -169,24 +183,48 @@ body {
 
 @media (max-width: 600px) {
   .weather-app {
-    padding: 22px 15px;
+    padding: 14px 12px;
+  }
+
+  .app-header {
+    font-size: 22px;
+  }
+
+  .search-section {
+    margin-bottom: 10px;
   }
 
   .current-weather {
-    padding: 30px 0 40px;
+    padding: 15px 0 20px;
   }
 
-  .forecast-section {
-    padding: 18px;
+  .current-temp {
+    font-size: 60px;
   }
 
   .forecast-card {
-    flex-basis: 90px;
-    min-height: 150px;
+    flex-basis: 76px;
+    min-height: 115px;
   }
 
   .forecast-icon {
-    width: 45px;
-    height: 45px;
+    width: 34px;
+    height: 34px;
+  }
+}
+
+@media (max-height: 650px) {
+  .weather-app {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .current-weather {
+    padding-top: 10px;
+    padding-bottom: 12px;
+  }
+
+  .current-temp {
+    font-size: 55px;
   }
 }

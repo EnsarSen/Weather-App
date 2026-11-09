@@ -3,13 +3,15 @@ export interface cityType {
   admin1: string;
   latitude: number;
   longitude: number;
+  country_code: string;
 }
 
 interface forecastData {
-    temperature: number,
-    temperatureUnit: string,
-    startTime: number,
-    isDaytime: boolean
+  temperature: number;
+  temperatureUnit: string;
+  startTime: number;
+  endTime: number;
+  isDaytime: boolean;
 }
 
 export interface forecastType {
